@@ -5,7 +5,7 @@
 ### 环境信息
 - 平台：Linux 虚拟机（VMware）
 - 连接方式：SSH 密码认证（宿主机 -> 虚拟机）
-- OpenClaw 安装方式：npm 全局安装，systemd 管理 gateway 服务
+- OpenClaw 安装方式：npm 全局安装，nohup 后台启动 gateway 服务
 
 ---
 
@@ -16,7 +16,7 @@
 |------|------|
 | 当前版本 | v2026.3.8 |
 | npm 可用版本 | 2026.3.11 (confirmed) |
-| Gateway 服务 | systemd active |
+| Gateway 服务 | nohup 后台运行 |
 | HTTP 18789 | 正常 200 |
 | 飞书 channel | enabled |
 | MiniMax 配置 | 已在 openclaw.json providers |
@@ -50,15 +50,59 @@ v2026.3.11 的 Control UI 采用了不同的前端架构：
 
 ---
 
+### 4. API 路径变化（重要）
+
+v2026.3.11 同步更新了 API 路径，与旧版不兼容：
+
+| 项目 | v2026.3.8 | v2026.3.11 |
+|------|-----------|------------|
+| 登录接口 | `/api/v1/auth/login` | `/auth/login` |
+| 其他 API | `/api/v1/...` | `/...` |
+
+升级后若使用旧路径调用 API 会返回 404，需注意同步更新客户端或脚本中的接口地址。
+
+---
+
+### 5. 认证问题排查：device identity required
+
+升级完成后访问 Control UI 遇到"设备身份要求（device identity required）"错误，排查过程如下：
+
+#### 问题一：allowInsecureAuth 未开启
+- 现象：输入 token 后提示认证失败
+- 原因：`gateway.controlUi.allowInsecureAuth` 默认为 `false`，HTTP 环境下不允许认证
+- 修复：将该配置改为 `true`
+
+#### 问题二：浏览器阻止 HTTP 下的设备身份验证
+- 现象：allowInsecureAuth 开启后仍然报 device identity required
+- 原因：v2026.3.11 引入设备身份验证机制，浏览器安全策略在纯 HTTP 环境下阻止该 API 调用
+- 修复：升级为 HTTPS 访问（见《网络配置日志》）
+
+#### 最终生效配置（openclaw.json 片段，脱敏）
+```json
+{
+  "gateway": {
+    "controlUi": {
+      "allowInsecureAuth": true,
+      "dangerouslyDisableDeviceAuth": true,
+      "allowedOrigins": ["https://[TAILSCALE_HTTPS_DOMAIN]"]
+    }
+  }
+}
+```
+
+> `dangerouslyDisableDeviceAuth: true` 为临时兼容方案，建议在 HTTPS 环境稳定后评估是否恢复设备身份验证。
+
+---
+
 ## 测试结果
 
 | 测试项 | 结果 |
 |--------|------|
 | 版本号 | v2026.3.11 (29dc654) |
-| Gateway systemd | active (running) |
+| Gateway 进程 | nohup 后台运行正常 |
 | HTTP 18789 | 200 OK |
-| 宿主机浏览器可达 | 已确认（日志有 webchat connected from [HOST_IP]）|
-| 飞书 WebSocket | feishu_doc / feishu_chat / feishu_wiki / feishu_drive / feishu_bitable 全部 Registered |
+| 宿主机浏览器可达 | 已确认（通过 Tailscale HTTPS）|
+| 飞书 channel | feishu_doc / feishu_chat / feishu_wiki / feishu_drive / feishu_bitable 全部 Registered |
 | MiniMax 模型 | 4 个模型正常（provider: minimax）|
 | 全部模型数 | 45 个，9 个 provider |
 
@@ -84,8 +128,8 @@ v2026.3.11 的 Control UI 采用了不同的前端架构：
 ---
 
 ## 规则遵守情况
-- L0.1 路径脱敏（用 [HOST_IP] 替代真实宿主机 IP）
-- L0.3.2 开放平台上传脱敏：无 token、密码、key 信息
+- 路径脱敏：用 [HOST_IP]、[TAILSCALE_HTTPS_DOMAIN] 替代真实地址
+- 开放平台上传脱敏：无 token、密码、key 信息
 - 操作全程密码仅在内存中使用，未写入任何持久文件
 
 ---
