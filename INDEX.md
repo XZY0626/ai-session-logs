@@ -38,5 +38,4 @@
 | 2026-03-11 | 小跃 | 规则文件与日志体系 | AI_RULES.md创建、GitHub日志仓库建设、模型调用修复 |
 | 2026-03-13 | WorkBuddy | GitHub凭证泄露安全事件修复 | 彻查三个仓库、修复18个含硬编码密码文件、升级AI_RULES.md至v2.0.0 |
 | 2026-03-13 | WorkBuddy | MiniMax模型接入 | openclaw.json新增4个MiniMax模型、前端selector v5、三端API测试通过 |
-
-
+- [2026-03-13-workbench-reorganize.md](./2026-03-13-workbench-reorganize.md) — WorkBuddy 工作区整理 & ai-rules 迁移
