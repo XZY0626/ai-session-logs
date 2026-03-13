@@ -21,6 +21,7 @@
 | 日期 | 对话主题 | 日志路径 |
 |------|---------|---------|
 | 2026-03-13 | GitHub凭证泄露安全事件彻查修复 + AI_RULES.md v2.0.0 | [logs/workbuddy/2026-03/20260313_GitHub凭证泄露安全事件修复.md](logs/workbuddy/2026-03/20260313_GitHub凭证泄露安全事件修复.md) |
+| 2026-03-13 | MiniMax大模型API接入OpenClaw三端配置（飞书/虚拟机/宿主机） | [logs/workbuddy/2026-03/20260313_MiniMax模型接入配置.md](logs/workbuddy/2026-03/20260313_MiniMax模型接入配置.md) |
 
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
@@ -36,5 +37,6 @@
 | 2026-03-10 | 小跃 | 飞书+OpenClaw全面配置 | 飞书机器人搭建、OpenClaw飞书频道、多平台模型接入、安全加固 |
 | 2026-03-11 | 小跃 | 规则文件与日志体系 | AI_RULES.md创建、GitHub日志仓库建设、模型调用修复 |
 | 2026-03-13 | WorkBuddy | GitHub凭证泄露安全事件修复 | 彻查三个仓库、修复18个含硬编码密码文件、升级AI_RULES.md至v2.0.0 |
+| 2026-03-13 | WorkBuddy | MiniMax模型接入 | openclaw.json新增4个MiniMax模型、前端selector v5、三端API测试通过 |
 
 
