@@ -142,6 +142,13 @@ nohup openclaw gateway start > ~/openclaw.log 2>&1 &
 
 ---
 
+## 参考资料
+
+- [How to Self-Host OpenClaw Securely on a VPS: A Security-First Guide](https://www.dsebastien.net/how-to-self-host-openclaw-securely-on-a-vps-a-security-first-guide/) — 介绍 OpenClaw 在 VPS 上的安全自托管方案，涵盖 HTTPS、认证配置等安全实践
+- [OpenClaw SSL Setup Guide](https://markaicode.com/openclaw-ssl-setup-guide/) — OpenClaw SSL/TLS 配置指南，详细说明证书申请与 HTTPS 接入方法
+
+---
+
 ## 脱敏说明
 - 虚拟机 LAN IP：已脱敏为 `[VM_LAN_IP]`
 - Tailscale 域名：已脱敏为 `[TAILSCALE_HOSTNAME].[TAILNET_DOMAIN]`
