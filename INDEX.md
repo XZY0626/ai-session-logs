@@ -42,6 +42,7 @@
 | 2026-03-13 | SSH 通道搭建（ed25519 密钥对 + Windows OpenSSH） | [logs/workbuddy/2026-03/20260313-ssh-channel-setup.md](logs/workbuddy/2026-03/20260313-ssh-channel-setup.md) |
 | 2026-03-14 | OpenRouter 模型批量测试与更新 v5.1 | [logs/workbuddy/2026-03/20260314-openrouter-model-update-v5.1.md](logs/workbuddy/2026-03/20260314-openrouter-model-update-v5.1.md) |
 | 2026-03-14 | SSH 安全加固（禁用密码登录）+ tailscale-serve 启动顺序修复 | [logs/workbuddy/2026-03/20260314-ssh-hardening.md](logs/workbuddy/2026-03/20260314-ssh-hardening.md) |
+| 2026-03-15 | 龙虾 v4 双轨规则保障 + 完整审计 — 6漏洞修复 + Windows定时任务 + 三端10/10验证 | [logs/workbuddy/2026-03/20260315-lobster-v4-workbuddy-session.md](logs/workbuddy/2026-03/20260315-lobster-v4-workbuddy-session.md) |
 
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
@@ -72,3 +73,5 @@
 | 2026-03-14 | OpenClaw | 龙虾成长计划 | 飞书权限修复、workspace初始化、4个核心技能（rules/task/github/feishu）部署 |
 | 2026-03-14 | OpenClaw | 龙虾 v2 升级 | 合规检查(0 critical)、IDENTITY正式出生、10轮重读规则、WorkBuddy DNA传授(并行/清晰展示/技能搭配) |
 | 2026-03-15 | OpenClaw | 龙虾 v3 修复 | AGENTS.md L0硬性拒绝注入、全程配置日志汇总、github-sync路径修复、L0.3脱敏规范 |
+| 2026-03-15 | WorkBuddy | 龙虾 v4 — 双轨规则保障 + SELF_KNOWLEDGE.md + Windows每日定时同步 | 任务级触发+每日03:00定时同步、Windows任务计划程序LobsterRuleSync、SELF_KNOWLEDGE.md部署 |
+| 2026-03-15 | WorkBuddy | 龙虾 v4 完整审计 | 全面合规审计、6个漏洞修复（脱敏/版本自检/PromptInjection/L0保护/开机自检/脚本持久化）、三端10/10验证 |
