@@ -77,3 +77,4 @@
 | 2026-03-15 | WorkBuddy | 龙虾 v4 — 双轨规则保障 + SELF_KNOWLEDGE.md + Windows每日定时同步 | 任务级触发+每日03:00定时同步、Windows任务计划程序LobsterRuleSync、SELF_KNOWLEDGE.md部署 |
 | 2026-03-15 | WorkBuddy | 龙虾 v4 完整审计 | 全面合规审计、6个漏洞修复（脱敏/版本自检/PromptInjection/L0保护/开机自检/脚本持久化）、三端10/10验证 |
 | 2026-03-15 | WorkBuddy | 龙虾 GitHub 日志仓库配置 + 自动化机制修复 | memory 沙箱路径修正、ai-session-logs 本地仓库初始化、SSH key 生成、HEARTBEAT.md 修正 |
+| 2026-03-15 | GitHub 日志推送路径修复验证 — workspace 软链接写入 + ai-session-logs 推送测试 | [logs/openclaw/2026-03/20260315-github-对接测试.md](logs/openclaw/2026-03/20260315-github-对接测试.md) |
