@@ -116,3 +116,51 @@ VMware 控制台（物理级访问）完全不经过 SSH，任何时候都可以
 | 加固前备份 | `/etc/ssh/sshd_config.bak.20260314` |
 | authorized_keys | `~/.ssh/authorized_keys` |
 | 宿主机私钥 | `E:\Application\WorkBuddy\id_vm` |
+
+---
+
+## 附录：重启验证与 tailscale-serve 启动顺序修复（2026-03-14）
+
+### 第一次重启验证结果
+
+加固完成后立即重启虚拟机进行验证，发现 `tailscale-serve` 服务启动失败：
+
+```
+tailscale-serve.service: Failed with result 'exit-code'
+tailscale[1574]: unexpected state: NoState
+```
+
+**根因：** `tailscale serve --bg 18789` 在 systemd 启动时执行太早，此时 tailscaled 守护进程虽已启动但尚未完成与 Tailscale 网络的握手（处于 `NoState`），导致 serve 命令失败退出。
+
+注：tailscale serve 的规则配置本身没有丢失，仅是本次启动时命令执行失败。
+
+### 修复方案
+
+在 `tailscale-serve.service` 中添加 `ExecStartPre`，在执行 serve 之前轮询等待 tailscale 网络就绪（最多等 30 秒）：
+
+```ini
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=/bin/bash -c 'for i in $(seq 1 30); do tailscale status 2>/dev/null | grep -q "^[0-9]" && exit 0; sleep 1; done; exit 1'
+ExecStart=/usr/bin/tailscale serve --bg 18789
+ExecStop=/usr/bin/tailscale serve --https=443 off
+```
+
+备份原文件：`/etc/systemd/system/tailscale-serve.service.bak.20260314`
+
+### 第二次重启验证结果（全链路）
+
+| 检查项 | 状态 |
+|--------|------|
+| SSH 密钥连接（20秒内） | ✅ |
+| `passwordauthentication no` 持久化 | ✅ |
+| `pubkeyauthentication yes` | ✅ |
+| `permitrootlogin no` | ✅ |
+| openclaw-gateway | ✅ active |
+| tailscale-serve | ✅ active（修复有效） |
+| tailscaled | ✅ active |
+| port 18789 监听 | ✅ |
+| loginctl linger | ✅ Linger=yes |
+
+**结论：所有服务开机自启正常，SSH 安全加固持久化生效，全链路验证通过。**
