@@ -96,3 +96,65 @@ OPENCLAW_SERVICE_VERSION=2026.3.13
 3. **每次升级前看 CHANGELOG**，安全相关的配置收紧（如 `dangerouslyDisableDeviceAuth`）会静默阻止启动，不一定有明显报错
 4. **`openclaw doctor --fix` 是升级后的标准操作**，可迁移 Cron 等数据格式
 5. openclaw 新版日志从 `~/openclaw.log` 迁移到 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`，排查问题时注意查新路径
+
+---
+
+## 附录：升级后首次登录问题排查（2026-03-14）
+
+### 背景
+
+升级到 3.13 后，虚拟机本地浏览器可以正常登录 Dashboard，但宿主机通过 Tailscale 访问时一直显示"需要配对"，无法进入。
+
+### Dashboard v2 登录方式变更
+
+| 项目 | 旧版（3.11） | 新版（3.12/3.13） |
+|------|------------|-----------------|
+| 进入方式 | 打开带 token 的 URL 直接进入 | 需在界面手动填入 WebSocket URL 和网关令牌 |
+| 令牌获取 | URL 内嵌 | `openclaw dashboard --no-open` 输出带令牌的完整 URL，从中提取令牌 |
+| 本地/远程认证 | 统一 | 区分 local（需配对）和 remote 客户端 |
+
+**密码字段说明（界面上标注"可选"）：**  
+Dashboard 登录界面上的"密码"字段并非登录密码，而是对应 `gateway.auth.mode=password` 这一认证模式。当 gateway 配置为 `password` 模式时，客户端连接需要提供此密码；当前配置为 `token` 模式时，密码字段留空即可（完全忽略）。`password` 模式适用于公网 Tailscale Funnel 场景，因为 funnel 暴露到公网，不适合用明文 token。
+
+### 问题一：`allowedOrigins` 配置误将本地也屏蔽
+
+- **排查过程**：查看 gateway 日志发现 `code=4008 connect failed`，继续查详细日志发现 `cause: origin-mismatch`
+- **根因**：在修复宿主机访问时新增了 `allowedOrigins` 只允许 Tailscale 域名，导致虚拟机本地 `http://127.0.0.1:18789` 的 origin 也被拒绝
+- **修复**：将 `http://127.0.0.1:18789` 和 `http://localhost:18789` 一同加入 `allowedOrigins`
+
+### 问题二：宿主机显示"需要配对"，无配对按钮
+
+- **根因**：新版 `local` 模式下，gateway 将所有非 loopback 来源的客户端视为"远程设备"，必须完成设备配对才能使用。通过 Tailscale 代理转发的宿主机请求属于此类
+- **尝试过但无效的方案**：
+  - `gateway.mode=network`：该值不存在（仅 `local`/`remote`）
+  - `gateway.mode=remote`：需额外 remote server 配置，不适用本地自托管
+  - `gateway.auth.mode=trusted-proxy`：需要代理在请求头中注入用户信息，Tailscale serve 不具备此能力
+- **正确方案：走设备配对流程**
+  1. 宿主机浏览器打开 Dashboard，填入令牌后点击连接（触发配对请求）
+  2. 在虚拟机执行 `openclaw devices list` 查看待处理的配对请求
+  3. 执行 `openclaw devices approve <requestId>` 批准
+  4. 配对仅需做一次，此后宿主机作为已信任设备直接用令牌登录
+
+```bash
+# 查看配对请求
+openclaw devices list
+
+# 批准（request ID 从 list 输出中获取）
+openclaw devices approve <request-id>
+```
+
+### 关于 `gateway.trustedProxies` 配置
+
+在排查过程中加入了 `gateway.trustedProxies: ["127.0.0.1"]`。该配置作用是让 gateway 信任反向代理（Tailscale serve）传来的 `X-Forwarded-For` 头，正确识别真实客户端 IP。这与配对要求是两个独立问题：
+- `trustedProxies` 解决的是 IP 识别问题（日志中的 `Proxy headers detected from untrusted address` 警告）
+- 配对要求来自 `gateway.mode=local` 的安全策略，和 IP 识别无关
+
+两个配置均需要正确设置，缺一不可。
+
+### 最终登录方式备忘
+
+1. 访问 `https://[tailscale-hostname]`（Tailscale HTTPS 地址）
+2. WebSocket URL 字段自动填入，无需修改
+3. 网关令牌：在虚拟机执行 `openclaw dashboard --no-open`，从输出 URL 的 `#token=` 后面提取（服务重启后令牌会变）
+4. 密码字段：留空（当前为 token 认证模式）
+5. 点击连接，首次需要在虚拟机端批准配对请求
