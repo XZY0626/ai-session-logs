@@ -29,6 +29,7 @@
 | 2026-03-14 | OpenClaw 安全加固 — 安全文档全量实施（0 critical · 4 warn） | [logs/openclaw/2026-03/20260314-openclaw-security-hardening.md](logs/openclaw/2026-03/20260314-openclaw-security-hardening.md) |
 | 2026-03-14 | 龙虾成长计划 — 飞书权限修复 + workspace初始化 + 4个核心技能部署 | [logs/openclaw/2026-03/20260314-lobster-growth-plan.md](logs/openclaw/2026-03/20260314-lobster-growth-plan.md) |
 | 2026-03-14 | 龙虾 v2 — 合规检查 + IDENTITY + 10轮重读规则 + WorkBuddy DNA传授 | [logs/openclaw/2026-03/20260314-lobster-v2-workbuddy-dna.md](logs/openclaw/2026-03/20260314-lobster-v2-workbuddy-dna.md) |
+| 2026-03-15 | 龙虾 v3 — AGENTS.md L0修复 + 全程配置日志 + 插件评估 + L0.3脱敏修复 | [logs/openclaw/2026-03/20260315-lobster-v3-agents-fix-full-log.md](logs/openclaw/2026-03/20260315-lobster-v3-agents-fix-full-log.md) |
 
 ### WorkBuddy (Tencent)
 | 日期 | 对话主题 | 日志路径 |
@@ -68,3 +69,4 @@
 | 2026-03-14 | OpenClaw | 安全加固 | 安全文档全量实施（0 critical · 4 warn） |
 | 2026-03-14 | OpenClaw | 龙虾成长计划 | 飞书权限修复、workspace初始化、4个核心技能（rules/task/github/feishu）部署 |
 | 2026-03-14 | OpenClaw | 龙虾 v2 升级 | 合规检查(0 critical)、IDENTITY正式出生、10轮重读规则、WorkBuddy DNA传授(并行/清晰展示/技能搭配) |
+| 2026-03-15 | OpenClaw | 龙虾 v3 修复 | AGENTS.md L0硬性拒绝注入、全程配置日志汇总、github-sync路径修复、L0.3脱敏规范 |
