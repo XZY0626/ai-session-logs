@@ -1,0 +1,1 @@
+docs: update README with WorkBuddy as primary AI and improved structure  

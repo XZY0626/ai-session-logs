@@ -36,6 +36,7 @@
 | 2026-03-14 | **[龙虾项目启动前复盘总结]** 规则合规检查 + AI_RULES.md v2.4.0 + 本次会话全量收尾 | [logs/workbuddy/2026-03/20260314-pre-lobster-final-review.md](logs/workbuddy/2026-03/20260314-pre-lobster-final-review.md) |
 | 2026-03-14 | OpenClaw 龙虾工具能力升级 — tools.profile: messaging → 21项 allow 列表 | [logs/workbuddy/2026-03/20260314-openclaw-tools-upgrade.md](logs/workbuddy/2026-03/20260314-openclaw-tools-upgrade.md) |
 | 2026-03-14 | OpenClaw 安全加固 — 安全文档全量实施（0 critical · 4 warn） | [logs/workbuddy/2026-03/20260314-openclaw-security-hardening.md](logs/workbuddy/2026-03/20260314-openclaw-security-hardening.md) |
+| 2026-03-14 | 龙虾成长计划 — 飞书权限修复 + workspace初始化 + 4个核心技能部署 | [logs/workbuddy/2026-03/20260314-lobster-growth-plan.md](logs/workbuddy/2026-03/20260314-lobster-growth-plan.md) |
 
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
