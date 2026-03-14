@@ -59,3 +59,4 @@
 | 2026-03-14 | WorkBuddy | OpenRouter 模型批量测试更新 | 新增 Hunter Alpha、Gemini 2.5 Pro 等模型，前端 v5.1 |
 | 2026-03-14 | WorkBuddy | SSH 安全加固 + tailscale-serve 修复 | 禁用密码登录、ExecStartPre 竞争修复、双次重启验证全绿 |
 | 2026-03-14 | WorkBuddy | **龙虾项目启动前复盘总结** | 规则合规复盘、INDEX.md 补全、AI_RULES.md v2.4.0、收尾上传 |
+| 2026-03-14 | WorkBuddy | OpenClaw 龙虾工具能力升级 | tools.profile: messaging → 21项 allow 列表，开放 exec/read/write/web/memory 等全套能力 |
