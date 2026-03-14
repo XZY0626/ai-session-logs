@@ -113,8 +113,20 @@ OPENCLAW_SERVICE_VERSION=2026.3.13
 | 令牌获取 | URL 内嵌 | `openclaw dashboard --no-open` 输出带令牌的完整 URL，从中提取令牌 |
 | 本地/远程认证 | 统一 | 区分 local（需配对）和 remote 客户端 |
 
-**密码字段说明（界面上标注"可选"）：**  
-Dashboard 登录界面上的"密码"字段并非登录密码，而是对应 `gateway.auth.mode=password` 这一认证模式。当 gateway 配置为 `password` 模式时，客户端连接需要提供此密码；当前配置为 `token` 模式时，密码字段留空即可（完全忽略）。`password` 模式适用于公网 Tailscale Funnel 场景，因为 funnel 暴露到公网，不适合用明文 token。
+### Dashboard 密码字段说明
+
+登录界面有三个输入项：WebSocket URL、网关令牌、密码（可选）。
+
+**密码字段不是账户密码**，它对应的是 `gateway.auth.mode` 的两种认证模式：
+
+| 认证模式 | 密码字段 | 适用场景 |
+|---------|---------|---------|
+| `token`（当前配置） | 留空，完全忽略 | Tailscale serve（私有网络），推荐默认 |
+| `password` | 必填，连接时验证 | Tailscale Funnel（公网暴露），token 不适合公网明文传输 |
+
+openclaw 源码中有明确提示：`"Tailscale funnel requires password auth"`，说明 `password` 模式专为 Funnel 公网场景设计。
+
+**当前配置为 `token` 模式，密码字段留空即可。**
 
 ### 问题一：`allowedOrigins` 配置误将本地也屏蔽
 
@@ -158,3 +170,52 @@ openclaw devices approve <request-id>
 3. 网关令牌：在虚拟机执行 `openclaw dashboard --no-open`，从输出 URL 的 `#token=` 后面提取（服务重启后令牌会变）
 4. 密码字段：留空（当前为 token 认证模式）
 5. 点击连接，首次需要在虚拟机端批准配对请求
+
+---
+
+## 附录：开机自启验证与方案 A 安全性分析（2026-03-14）
+
+### 开机自启链路验证
+
+关机重启后 openclaw 能否自动恢复，取决于以下三个服务/配置全部就绪：
+
+| 组件 | 类型 | 状态 | 说明 |
+|------|------|------|------|
+| `tailscaled` | system 级 systemd | enabled ✅ | Tailscale 守护进程，开机自启 |
+| `tailscale-serve` | system 级 systemd | enabled ✅ | HTTPS 反向代理，开机自启 |
+| `openclaw-gateway` | 用户级 systemd | enabled ✅ | openclaw 网关，用户级自启 |
+| loginctl linger | xzy0626 用户 | Linger=yes ✅ | 无需登录即可启动用户级服务 |
+
+端口监听：`127.0.0.1:18789` 已由 openclaw-gateway 持有 ✅
+
+**结论：全链路开机自启配置正确，无需手动干预。**
+
+> 注意：`openclaw-gateway` 是用户级（`--user`）systemd 服务，`loginctl linger=yes` 是让它在无人登录时也能随系统启动。如果 linger 被意外关闭（`loginctl disable-linger xzy0626`），openclaw 只会在你 SSH 登录后才启动。
+
+---
+
+### 方案 A 安全性分析（`gateway.mode=remote`）
+
+在排查宿主机配对问题时，曾考虑过将 `gateway.mode` 改为 `remote` 来跳过配对要求，但最终放弃了。这里记录为什么放弃以及该模式的安全含义。
+
+**方案 A 是什么：** 将 `gateway.mode` 从 `local` 改为 `remote`，openclaw gateway 设计为"被远程服务端管理"的模式，不强制要求设备配对。
+
+**安全性评估：**
+
+| 维度 | local 模式（当前） | remote 模式 |
+|------|-----------------|------------|
+| 攻击面 | 只监听 loopback，网络层隔离 | 同样只监听 loopback，但认证逻辑不同 |
+| 认证强度 | token + 设备配对双重验证 | 依赖 remote server 的身份管理，本地配对可绕过 |
+| 适用场景 | 个人/团队自托管 | 企业 SaaS 托管（openclaw cloud） |
+| 配对要求 | 有，首次需要 | 无 |
+| 是否适合当前环境 | ✅ 是 | ❌ 否（需要配套 remote server，单机部署无法启动） |
+
+**结论：方案 A 不适合当前自托管场景**，并非安全性低，而是设计上就不支持无 remote server 的独立部署（实测 `gateway.mode=remote` 时服务直接拒绝启动）。
+
+**当前方案（local + 设备配对）安全性分析：**
+- gateway 只绑定 loopback（`127.0.0.1`），外部无法直接访问
+- Tailscale serve 做 HTTPS 终止，流量在 Tailscale 网络内加密
+- 宿主机首次访问需配对批准，之后作为受信任设备
+- 令牌不存储在浏览器中（"不存储"为 Dashboard 界面原文）
+
+这套方案在私有 Tailscale 网络下安全性是足够的。
