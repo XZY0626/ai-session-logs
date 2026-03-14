@@ -34,6 +34,8 @@
 | 2026-03-14 | OpenRouter 模型批量测试与更新 v5.1 | [logs/workbuddy/2026-03/20260314-openrouter-model-update-v5.1.md](logs/workbuddy/2026-03/20260314-openrouter-model-update-v5.1.md) |
 | 2026-03-14 | SSH 安全加固（禁用密码登录）+ tailscale-serve 启动顺序修复 | [logs/workbuddy/2026-03/20260314-ssh-hardening.md](logs/workbuddy/2026-03/20260314-ssh-hardening.md) |
 | 2026-03-14 | **[龙虾项目启动前复盘总结]** 规则合规检查 + AI_RULES.md v2.4.0 + 本次会话全量收尾 | [logs/workbuddy/2026-03/20260314-pre-lobster-final-review.md](logs/workbuddy/2026-03/20260314-pre-lobster-final-review.md) |
+| 2026-03-14 | OpenClaw 龙虾工具能力升级 — tools.profile: messaging → 21项 allow 列表 | [logs/workbuddy/2026-03/20260314-openclaw-tools-upgrade.md](logs/workbuddy/2026-03/20260314-openclaw-tools-upgrade.md) |
+| 2026-03-14 | OpenClaw 安全加固 — 安全文档全量实施（0 critical · 4 warn） | [logs/workbuddy/2026-03/20260314-openclaw-security-hardening.md](logs/workbuddy/2026-03/20260314-openclaw-security-hardening.md) |
 
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
