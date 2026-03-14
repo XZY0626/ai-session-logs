@@ -30,6 +30,7 @@
 | 2026-03-14 | 龙虾成长计划 — 飞书权限修复 + workspace初始化 + 4个核心技能部署 | [logs/openclaw/2026-03/20260314-lobster-growth-plan.md](logs/openclaw/2026-03/20260314-lobster-growth-plan.md) |
 | 2026-03-14 | 龙虾 v2 — 合规检查 + IDENTITY + 10轮重读规则 + WorkBuddy DNA传授 | [logs/openclaw/2026-03/20260314-lobster-v2-workbuddy-dna.md](logs/openclaw/2026-03/20260314-lobster-v2-workbuddy-dna.md) |
 | 2026-03-15 | 龙虾 v3 — AGENTS.md L0修复 + 全程配置日志 + 插件评估 + L0.3脱敏修复 | [logs/openclaw/2026-03/20260315-lobster-v3-agents-fix-full-log.md](logs/openclaw/2026-03/20260315-lobster-v3-agents-fix-full-log.md) |
+| 2026-03-15 | 龙虾 v4 — 双轨规则保障 + SELF_KNOWLEDGE.md + Windows每日定时同步 | [logs/openclaw/2026-03/20260315-lobster-v4-dual-rule-track.md](logs/openclaw/2026-03/20260315-lobster-v4-dual-rule-track.md) |
 
 ### WorkBuddy (Tencent)
 | 日期 | 对话主题 | 日志路径 |
