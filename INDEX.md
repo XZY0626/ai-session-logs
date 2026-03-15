@@ -83,3 +83,4 @@
 | 2026-03-15 | WorkBuddy | VoxBridge git 历史清理 + 推送修复 | .git 从 4.9GB→376KB（清除 venv/CUDA 历史）、重建干净仓库、推送成功 d0c7182 |
 | 2026-03-15 | WorkBuddy | VoxBridge 目录重命名 + 双写冲突规则 | VoxBridge- 重命名为 VoxBridge、github-sync.md 增加 pull --rebase 规范、feasibility report 脱敏扫描通过 |
 | 2026-03-15 | WorkBuddy | OpenClaw 知识库升级（KNOWLEDGE_BASE.md + AGENTS.md v4.1） | 轻量知识库替代 RAG、n8n 记录为未来选项、三端8/8验证全绿 |
+| 2026-03-15 | WorkBuddy | 未来方案储备库创建（FUTURE_ROADMAP.md） | 5个方案存档：n8n编排/RAG/CRM/多Agent/语音交互，含触发条件和部署方案 |
