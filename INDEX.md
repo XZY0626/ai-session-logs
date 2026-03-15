@@ -46,6 +46,7 @@
 | 2026-03-15 | 龙虾 GitHub 日志仓库配置 + 自动化机制修复（memory 沙箱路径 + ai-session-logs 初始化） | [logs/workbuddy/2026-03/20260315-lobster-github-repo-fix.md](logs/workbuddy/2026-03/20260315-lobster-github-repo-fix.md) |
 | 2026-03-15 | workspace 路径修复（workspaceOnly 前缀机制）+ VoxBridge 项目启动授权 | [logs/workbuddy/2026-03/20260315-lobster-workspace-path-fix-voxbridge.md](logs/workbuddy/2026-03/20260315-lobster-workspace-path-fix-voxbridge.md) |
 | 2026-03-15 | OpenClaw v2026.3.13 全面健康检查与修复（Memory Search/性能变量/PATH/孤立文件） | [logs/workbuddy/2026-03/20260315-openclaw-full-health-check.md](logs/workbuddy/2026-03/20260315-openclaw-full-health-check.md) |
+| 2026-03-15 | Memory Search 修复（remote.baseUrl）+ knowledge-notebook Skill + extraPaths 索引扩展（62文件/137chunks） | [logs/workbuddy/2026-03/20260315-memory-search-fix-notebook-skill.md](logs/workbuddy/2026-03/20260315-memory-search-fix-notebook-skill.md) |
 
 ### OpenClaw Agent（续）
 | 日期 | 对话主题 | 日志路径 |
@@ -91,3 +92,4 @@
 | 2026-03-15 | OpenClaw | OpenClaw 知识库架构升级 + 国外方案评估 | 轻量知识库替代 RAG、n8n 记录为未来选项、KNOWLEDGE_BASE.md v1.0、三端8/8验证全绿 |
 | 2026-03-15 | WorkBuddy | 未来方案储备库创建（FUTURE_ROADMAP.md） | 5个方案存档：n8n编排/RAG/CRM/多Agent/语音交互，含触发条件和部署方案 |
 | 2026-03-15 | WorkBuddy | OpenClaw v2026.3.13 全面健康检查与修复 | Memory Search（openai/text-embedding-v3）激活、auth-profiles格式修复、性能变量写入systemd、CLI PATH修复、21个孤立文件清理 |
+| 2026-03-15 | WorkBuddy | Memory Search 修复 + knowledge-notebook Skill | remote.baseUrl 修复→Embeddings ready、extraPaths扩展→62文件137chunks、NotebookLM风格Skill部署 |
