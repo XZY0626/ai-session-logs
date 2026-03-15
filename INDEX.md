@@ -79,3 +79,4 @@
 | 2026-03-15 | WorkBuddy | 龙虾 v4 完整审计 | 全面合规审计、6个漏洞修复（脱敏/版本自检/PromptInjection/L0保护/开机自检/脚本持久化）、三端10/10验证 |
 | 2026-03-15 | WorkBuddy | 龙虾 GitHub 日志仓库配置 + 自动化机制修复 | memory 沙箱路径修正、ai-session-logs 本地仓库初始化、SSH key 生成、HEARTBEAT.md 修正 |
 | 2026-03-15 | WorkBuddy | workspace 路径修复 + VoxBridge 启动 | workspaceOnly 字符串前缀机制诊断、github-sync.md 重写、TOOLS.md 更新、VoxBridge 仓库名修正 |
+| 2026-03-15 | OpenClaw | GitHub 日志推送路径修复验证 — workspace 软链接写入 + ai-session-logs 推送测试 | [logs/openclaw/2026-03/20260315-github-对接测试.md](logs/openclaw/2026-03/20260315-github-对接测试.md) |
