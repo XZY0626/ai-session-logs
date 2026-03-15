@@ -93,3 +93,4 @@
 | 2026-03-15 | WorkBuddy | 未来方案储备库创建（FUTURE_ROADMAP.md） | 5个方案存档：n8n编排/RAG/CRM/多Agent/语音交互，含触发条件和部署方案 |
 | 2026-03-15 | WorkBuddy | OpenClaw v2026.3.13 全面健康检查与修复 | Memory Search（openai/text-embedding-v3）激活、auth-profiles格式修复、性能变量写入systemd、CLI PATH修复、21个孤立文件清理 |
 | 2026-03-15 | WorkBuddy | Memory Search 修复 + knowledge-notebook Skill | remote.baseUrl 修复→Embeddings ready、extraPaths扩展→62文件137chunks、NotebookLM风格Skill部署 |
+| 2026-03-15 | WorkBuddy | Memory Search 诊断 + Embedding 通用方案 + knowledge-ingest Skill | 确认系统正常（64文件137chunks）、澄清对话/Embedding模型独立性、新增投喂知识操作指南Skill |
