@@ -44,6 +44,7 @@
 | 2026-03-14 | SSH 安全加固（禁用密码登录）+ tailscale-serve 启动顺序修复 | [logs/workbuddy/2026-03/20260314-ssh-hardening.md](logs/workbuddy/2026-03/20260314-ssh-hardening.md) |
 | 2026-03-15 | 龙虾 v4 双轨规则保障 + 完整审计 — 6漏洞修复 + Windows定时任务 + 三端10/10验证 | [logs/workbuddy/2026-03/20260315-lobster-v4-workbuddy-session.md](logs/workbuddy/2026-03/20260315-lobster-v4-workbuddy-session.md) |
 | 2026-03-15 | 龙虾 GitHub 日志仓库配置 + 自动化机制修复（memory 沙箱路径 + ai-session-logs 初始化） | [logs/workbuddy/2026-03/20260315-lobster-github-repo-fix.md](logs/workbuddy/2026-03/20260315-lobster-github-repo-fix.md) |
+| 2026-03-15 | workspace 路径修复（workspaceOnly 前缀机制）+ VoxBridge 项目启动授权 | [logs/workbuddy/2026-03/20260315-lobster-workspace-path-fix-voxbridge.md](logs/workbuddy/2026-03/20260315-lobster-workspace-path-fix-voxbridge.md) |
 
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
@@ -77,3 +78,4 @@
 | 2026-03-15 | WorkBuddy | 龙虾 v4 — 双轨规则保障 + SELF_KNOWLEDGE.md + Windows每日定时同步 | 任务级触发+每日03:00定时同步、Windows任务计划程序LobsterRuleSync、SELF_KNOWLEDGE.md部署 |
 | 2026-03-15 | WorkBuddy | 龙虾 v4 完整审计 | 全面合规审计、6个漏洞修复（脱敏/版本自检/PromptInjection/L0保护/开机自检/脚本持久化）、三端10/10验证 |
 | 2026-03-15 | WorkBuddy | 龙虾 GitHub 日志仓库配置 + 自动化机制修复 | memory 沙箱路径修正、ai-session-logs 本地仓库初始化、SSH key 生成、HEARTBEAT.md 修正 |
+| 2026-03-15 | WorkBuddy | workspace 路径修复 + VoxBridge 启动 | workspaceOnly 字符串前缀机制诊断、github-sync.md 重写、TOOLS.md 更新、VoxBridge 仓库名修正 |
