@@ -46,6 +46,11 @@
 | 2026-03-15 | 龙虾 GitHub 日志仓库配置 + 自动化机制修复（memory 沙箱路径 + ai-session-logs 初始化） | [logs/workbuddy/2026-03/20260315-lobster-github-repo-fix.md](logs/workbuddy/2026-03/20260315-lobster-github-repo-fix.md) |
 | 2026-03-15 | workspace 路径修复（workspaceOnly 前缀机制）+ VoxBridge 项目启动授权 | [logs/workbuddy/2026-03/20260315-lobster-workspace-path-fix-voxbridge.md](logs/workbuddy/2026-03/20260315-lobster-workspace-path-fix-voxbridge.md) |
 
+### OpenClaw Agent（续）
+| 日期 | 对话主题 | 日志路径 |
+|------|---------|---------|
+| 2026-03-15 | OpenClaw 知识库架构升级 + 国外方案评估（KNOWLEDGE_BASE.md + AGENTS.md v4.1） | [logs/openclaw/2026-03/20260315-knowledge-base-upgrade.md](logs/openclaw/2026-03/20260315-knowledge-base-upgrade.md) |
+
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
 |------|-----|---------|---------|
@@ -82,5 +87,5 @@
 | 2026-03-15 | OpenClaw | GitHub 日志推送路径修复验证 | workspace 软链接写入测试成功、ai-session-logs 推送验证 |
 | 2026-03-15 | WorkBuddy | VoxBridge git 历史清理 + 推送修复 | .git 从 4.9GB→376KB（清除 venv/CUDA 历史）、重建干净仓库、推送成功 d0c7182 |
 | 2026-03-15 | WorkBuddy | VoxBridge 目录重命名 + 双写冲突规则 | VoxBridge- 重命名为 VoxBridge、github-sync.md 增加 pull --rebase 规范、feasibility report 脱敏扫描通过 |
-| 2026-03-15 | WorkBuddy | OpenClaw 知识库升级（KNOWLEDGE_BASE.md + AGENTS.md v4.1） | 轻量知识库替代 RAG、n8n 记录为未来选项、三端8/8验证全绿 |
+| 2026-03-15 | OpenClaw | OpenClaw 知识库架构升级 + 国外方案评估 | 轻量知识库替代 RAG、n8n 记录为未来选项、KNOWLEDGE_BASE.md v1.0、三端8/8验证全绿 |
 | 2026-03-15 | WorkBuddy | 未来方案储备库创建（FUTURE_ROADMAP.md） | 5个方案存档：n8n编排/RAG/CRM/多Agent/语音交互，含触发条件和部署方案 |
