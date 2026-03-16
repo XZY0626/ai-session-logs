@@ -53,6 +53,13 @@
 |------|---------|---------|
 | 2026-03-15 | OpenClaw 知识库架构升级 + 国外方案评估（KNOWLEDGE_BASE.md + AGENTS.md v4.1） | [logs/openclaw/2026-03/20260315-knowledge-base-upgrade.md](logs/openclaw/2026-03/20260315-knowledge-base-upgrade.md) |
 
+### WorkBuddy（续 2026-03-16）
+| 日期 | 对话主题 | 日志路径 |
+|------|---------|---------|
+| 2026-03-16 | HuggingFace Token 配置与最小权限化 | [logs/workbuddy/2026-03/20260316-huggingface-token-setup.md](logs/workbuddy/2026-03/20260316-huggingface-token-setup.md) |
+| 2026-03-16 | HF Token 只读化操作 | [logs/workbuddy/2026-03/20260316-hf-token-update-readonly.md](logs/workbuddy/2026-03/20260316-hf-token-update-readonly.md) |
+| 2026-03-16 | **安全加固：认证旁路清除 + AI_RULES v2.5.1** | [logs/workbuddy/2026-03/20260316-security-hardening-auth-hf-token.md](logs/workbuddy/2026-03/20260316-security-hardening-auth-hf-token.md) |
+
 ### Claude / GPT / 其他
 | 日期 | AI | 对话主题 | 日志路径 |
 |------|-----|---------|---------|
@@ -95,3 +102,5 @@
 | 2026-03-15 | WorkBuddy | Memory Search 修复 + knowledge-notebook Skill | remote.baseUrl 修复→Embeddings ready、extraPaths扩展→62文件137chunks、NotebookLM风格Skill部署 |
 | 2026-03-15 | WorkBuddy | Memory Search 诊断 + Embedding 通用方案 + knowledge-ingest Skill | 确认系统正常（64文件137chunks）、澄清对话/Embedding模型独立性、新增投喂知识操作指南Skill |
 | 2026-03-15 | WorkBuddy | 全面安全检查 + Embedding机制讲解 + Hunter/Healer验证 | 14项全绿、tailscale-serve正常（oneshot型）、22个模型已配置、API均200、全面状态报告 |
+| 2026-03-16 | WorkBuddy | HuggingFace Token 配置与只读化 | HF Token 存储至 VM、pyannote 模型下载成功、Token 降权为只读 |
+| 2026-03-16 | WorkBuddy | **安全加固 — 认证旁路清除 + 规则体系 v2.5.1** | 删除 `.pre-disable-auth` 认证旁路文件、AGENTS.md 补全技能注册表（新增 scrapling）、AI_RULES.md v2.5.1 新增认证标志文件安全条款、OPENCLAW_HEALTH_CHECK.md 同步更新 |
