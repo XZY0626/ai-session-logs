@@ -20,6 +20,7 @@
 |------|---------|---------|
 | 2026-03-21 | OpenClaw 小白使用手册 PDF 生成（Markdown → PDF） | [logs/openclaw/2026-03/OpenClaw小白使用手册.pdf](logs/openclaw/2026-03/OpenClaw小白使用手册.pdf) |
 | 2026-03-22 | OpenClaw 部署与架构技术手册 PDF 生成 | [logs/openclaw/2026-03/OpenClaw部署与架构技术手册.pdf](logs/openclaw/2026-03/OpenClaw部署与架构技术手册.pdf) |
+| 2026-03-22 | OpenClaw 小白手册简化（移除敏感信息，纯框架描述） | [logs/openclaw/2026-03/20260322-小白手册简化.md](logs/openclaw/2026-03/20260322-小白手册简化.md) |
 | 2026-03-13 | OpenClaw 升级 v2026.3.8 → v2026.3.11 | [logs/openclaw/2026-03/2026-03-13-openclaw-upgrade-v2026311.md](logs/openclaw/2026-03/2026-03-13-openclaw-upgrade-v2026311.md) |
 | 2026-03-13 | Tailscale HTTPS 方案配置 + openclaw 网络安全加固 | [logs/openclaw/2026-03/2026-03-13-openclaw-network-tailscale-https.md](logs/openclaw/2026-03/2026-03-13-openclaw-network-tailscale-https.md) |
 | 2026-03-13 | OpenClaw 前端 selector v5 + MiniMax 模型接入 | [logs/openclaw/2026-03/2026-03-13-openclaw-frontend-v5-minimax.md](logs/openclaw/2026-03/2026-03-13-openclaw-frontend-v5-minimax.md) |
